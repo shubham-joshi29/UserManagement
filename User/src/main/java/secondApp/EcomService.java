@@ -5,7 +5,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class EcomService {
 	public void marathi() {
-		System.out.println("this is extra package to test component scan annotation");
+		System.out.println("This is EcomService class");
+		System.out.println("used to check component scan working");
 	}
 
 }
