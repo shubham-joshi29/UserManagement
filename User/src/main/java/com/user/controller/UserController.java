@@ -28,9 +28,6 @@ public class UserController {
 	@Autowired
 	UserServiceImpl userService;
 	
-//	public UserController(UserServiceImpl userService) {
-//		this.userService = userService;
-//	}
 	
 	@GetMapping("/getAllUsers")
 	public ResponseEntity<List<UserDTO>> getAllUsers(){
@@ -63,18 +60,5 @@ public class UserController {
 		return new ResponseEntity<>(id,HttpStatus.OK);
 	}
 	
-//	@GetMapping("/v1")
-//	public ResponseEntity<String>v1() {
-//		String i = userService.utilCheck();
-//		return new ResponseEntity<>(i,HttpStatus.OK);
-//	}
-////		
-//		System.out.println("The first value of id is :-"+i+" $$$$$$$$$$$$$$$$$$$$$$$$$$$");
-//		userService.setId1(Nid);
-//		i = userService.getId1();
-//		System.out.println("The second value of id is :-"+i+" #####################");
-//		String ss = "The value of id is :- "+i;
-//		return new ResponseEntity<>(ss,HttpStatus.OK);
-//	}
 
 }
