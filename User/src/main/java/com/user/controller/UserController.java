@@ -59,11 +59,6 @@ public class UserController {
 		Integer id = userService.removeUser(userId);
 		return new ResponseEntity<>(id,HttpStatus.OK);
 	}
-	@GetMapping("/getUsers")
-	public ResponseEntity<List<UserDTO>> getUsers(){
-		List<UserDTO> users = userService.getAllUsers();
-		return new ResponseEntity<>(users,HttpStatus.OK);
-	}
 	
 	
 
