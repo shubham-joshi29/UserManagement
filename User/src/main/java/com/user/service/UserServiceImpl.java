@@ -15,7 +15,6 @@ import com.user.repository.UserRepository;
 
 
 @Service
-//@Scope("prototype")
 public class UserServiceImpl implements UserService {
 	
 	@Autowired
@@ -45,7 +44,6 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public Integer addUser(UserDTO userdto) {
-		System.out.println("dto in service:- "+ userdto);
 		Optional<User> i = userRepository.findById(userdto.getUserId());
 		if(i.isPresent()) {
 			return null;
@@ -61,10 +59,33 @@ public class UserServiceImpl implements UserService {
 		if(user.isEmpty()) {
 			return null;
 		}
-		User userupdate = user.get();
-		userupdate.setMobileNumber(userdto.getMobileNumber());
-		userRepository.save(userupdate);
-		return userupdate.getUserId();
+		User updatedUser = user.get();
+		System.out.println("usee############ "+ updatedUser+ "$$$$$$$$$ "+ userdto.getUserId() );
+		
+		if(!userdto.getUserId().equals(updatedUser.getUserId())) {
+			return 400;
+		}else {
+			if(userdto.getUserName()!= null) {
+				updatedUser.setUserName(userdto.getUserName());
+			}
+			if(userdto.getGender()!= null) {
+				updatedUser.setGender(userdto.getGender());
+			}
+			if(userdto.getDob()!= null) {
+				updatedUser.setDob(userdto.getDob());
+			}
+			if(userdto.getMobileNumber()!= null) {
+				updatedUser.setMobileNumber(userdto.getMobileNumber());
+			}
+			if(userdto.getAddress()!= null) {
+				updatedUser.setAddress(userdto.getAddress());
+			}
+			
+			
+		}
+		userRepository.save(updatedUser);
+		return updatedUser.getUserId();
+		
 	}
 
 	@Override
